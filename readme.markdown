@@ -1,6 +1,6 @@
 Boob is a Boo-based build system.
 
-> It's named in the tradition of `Git'. (I mean, seriously, who writes yet
+> It's named in the tradition of "Git". (I mean, seriously, who writes yet
 > another build system unless they're a complete boob.)
 
 It's designed for complex builds of C, C++, C#, and assembler targeting game
@@ -25,7 +25,7 @@ The minimal build file "HelloWorld.module" looks like:
     Program
 
 Yup, that's it. This builds a static executable program, pulling source files
-from src/*.cpp in the manner than makes sense for the platform. There's
+from src/\*.cpp in the manner than makes sense for the platform. There's
 support for the official tools for Win32, Win64, Xbox 360, PS3, and Wii out of
 the box.
 
