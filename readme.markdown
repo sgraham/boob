@@ -29,4 +29,4 @@ from src/\*.cpp in the manner than makes sense for the platform. There's
 support for the official tools for Win32, Win64, Xbox 360, PS3, and Wii out of
 the box.
 
-See [GettingStarted](GettingStarted) for more info.
+See [GettingStarted](doc/GettingStarted.markdown) for more info.
