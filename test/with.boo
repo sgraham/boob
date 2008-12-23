@@ -2,17 +2,27 @@ import System
 import Boo.Lang.Compiler
 import Boo.Lang.Compiler.Ast
 
-InProgram as bool = false
-InProgram = true
+class ProgramState:
+    public InBody as int
+    # ...
+
+CurrentModule as duck = null
 
 macro program:
     assert program.Arguments.Count == 0
+    assert CurrentModule == null
+    CurrentModule = ProgramState()
     return [|
-        InProgram = true
-    |].withLexicalInfoFrom(program).Block
+        block:
+            CurrentModule.InBody = true
+            $(program.Block)
+            CurrentModule.InBody = false
+    |].Block
+
 
 macro depends:
     assert depends.Arguments.Count == 0
+    print Module
     for x in depends.Block.Statements:
         if x isa Ast.ExpressionStatement:
             e = cast(Ast.ExpressionStatement, x).Expression
@@ -28,7 +38,6 @@ macro depends:
             Unexpected statement type in 'depends'. If you want to do logic
             to determine a depends, put the logic on the outside, and put
             a new depends block on the inside."""
-
 
 program:
     depends:
